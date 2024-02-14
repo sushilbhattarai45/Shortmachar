@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, ImageBackground, Image, ScrollView } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { Link } from "expo-router";
 import { Colors } from "../components/colors";
@@ -78,7 +78,7 @@ export default function HomeScreen() {
             onChangeText={setSearchQuery}
             value={searchQuery}
           />
-          <View style={{ marginTop: 10 }}>
+          <View style={{ marginTop: 10, flex: 0.04 }}>
             <Text
               style={{
                 fontFamily: "Roboto",
@@ -90,6 +90,122 @@ export default function HomeScreen() {
             >
               Highlights
             </Text>
+          </View>
+          <View
+            style={{
+              flex: 0.36,
+              display: "flex",
+              flexDirection: "row",
+              alignContent: "center",
+              justifyContent: "center",
+            }}
+          >
+            <ScrollView
+              style={{ display: "flex" }}
+              showsHorizontalScrollIndicator={false}
+              horizontal={true}
+            >
+              <View
+                style={{
+                  marginTop: 10,
+                  marginRight: 10,
+                  borderRadius: 10,
+                }}
+              >
+                <Image
+                  style={{
+                    borderRadius: 10,
+                  }}
+                  width={300}
+                  height={200}
+                  source={{
+                    uri: "https://cdn.hashnode.com/res/hashnode/image/upload/v1707582038715/706edfe1-8154-4fec-b6fc-573de32adcd5.png",
+                  }}
+                />
+                <Text
+                  style={{
+                    fontFamily: "Roboto",
+                    fontSize: 12,
+                    margin: 10,
+                    marginTop: -50,
+                    width: 270,
+                    display: "wrap",
+                    fontWeight: "bold",
+                    color: Colors.white,
+                    alignSelf: "flex-start",
+                  }}
+                >
+                  Mastering React: A Guide to Events, State, and Hooks for
+                  Dynamic UrIs|| Lesson - 3
+                </Text>
+              </View>
+              <View
+                style={{
+                  marginTop: 10,
+                  marginRight: 10,
+                  borderRadius: 10,
+                }}
+              >
+                <Image
+                  style={{
+                    borderRadius: 10,
+                  }}
+                  width={300}
+                  height={200}
+                  source={{
+                    uri: "https://cdn.hashnode.com/res/hashnode/image/upload/v1707582038715/706edfe1-8154-4fec-b6fc-573de32adcd5.png",
+                  }}
+                />
+                <Text
+                  style={{
+                    fontFamily: "Roboto",
+                    fontSize: 12,
+                    margin: 10,
+                    marginTop: -50,
+                    width: 270,
+                    display: "wrap",
+                    fontWeight: "bold",
+                    color: Colors.white,
+                    alignSelf: "flex-start",
+                  }}
+                >
+                  Mastering React: A Guide to Events, State, and Hooks for
+                  Dynamic UrIs|| Lesson - 3
+                </Text>
+              </View>
+              <View
+                style={{
+                  marginTop: 10,
+                  marginRight: 10,
+                  borderRadius: 10,
+                }}
+              >
+                <Image
+                  style={{
+                    borderRadius: 10,
+                  }}
+                  width={300}
+                  height={200}
+                  source={{ uri: "https://legacy.reactjs.org/logo-og.png" }}
+                />
+                <Text
+                  style={{
+                    fontFamily: "Roboto",
+                    fontSize: 12,
+                    margin: 10,
+                    marginTop: -50,
+                    width: 270,
+                    display: "wrap",
+                    fontWeight: "bold",
+                    color: Colors.white,
+                    alignSelf: "flex-start",
+                  }}
+                >
+                  Mastering React: A Guide to Events, State, and Hooks for
+                  Dynamic UrIs|| Lesson - 3
+                </Text>
+              </View>
+            </ScrollView>
           </View>
         </View>
       </View>
