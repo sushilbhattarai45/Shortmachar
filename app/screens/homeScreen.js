@@ -234,6 +234,7 @@ export default function HomeScreen() {
                     fontSize: 14,
                     color: Colors.grey,
                     margin: 10,
+                    marginLeft: 0,
                     fontWeight: "bold",
                     alignSelf: "flex-start",
                   }}
@@ -254,6 +255,7 @@ export default function HomeScreen() {
                     fontSize: 14,
                     color: Colors.grey,
                     margin: 10,
+                    marginLeft: 0,
                     fontWeight: "bold",
                     alignSelf: "flex-start",
                   }}
@@ -274,6 +276,7 @@ export default function HomeScreen() {
                     fontSize: 14,
                     color: Colors.grey,
                     margin: 10,
+                    marginLeft: 0,
                     fontWeight: "bold",
                     alignSelf: "flex-start",
                   }}
@@ -294,6 +297,7 @@ export default function HomeScreen() {
                     fontSize: 14,
                     color: Colors.grey,
                     margin: 10,
+                    marginLeft: 0,
                     fontWeight: "bold",
                     alignSelf: "flex-start",
                   }}
@@ -314,6 +318,7 @@ export default function HomeScreen() {
                     fontSize: 14,
                     color: Colors.grey,
                     margin: 10,
+                    marginLeft: 0,
                     fontWeight: "bold",
                     alignSelf: "flex-start",
                   }}
@@ -334,6 +339,7 @@ export default function HomeScreen() {
                     fontSize: 14,
                     color: Colors.grey,
                     margin: 10,
+                    marginLeft: 0,
                     fontWeight: "bold",
                     alignSelf: "flex-start",
                   }}

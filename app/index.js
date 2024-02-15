@@ -10,7 +10,7 @@ export default function Index() {
   return (
     <View
       style={{
-        margin: 24,
+        margin: 16,
         flex: 1,
         flexDirection: "row",
         justifyContent: "center",
