@@ -207,6 +207,142 @@ export default function HomeScreen() {
               </View>
             </ScrollView>
           </View>
+          <View
+            style={{
+              flex: 0.16,
+              display: "flex",
+
+              flexDirection: "row",
+              alignContent: "center",
+              justifyContent: "center",
+            }}
+          >
+            <ScrollView
+              showsHorizontalScrollIndicator={false}
+              horizontal={true}
+            >
+              <View
+                style={{
+                  marginTop: 1,
+                  marginRight: 10,
+                  borderRadius: 10,
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: "Roboto",
+                    fontSize: 14,
+                    color: Colors.grey,
+                    margin: 10,
+                    fontWeight: "bold",
+                    alignSelf: "flex-start",
+                  }}
+                >
+                  News
+                </Text>
+              </View>
+              <View
+                style={{
+                  marginTop: 1,
+                  marginRight: 10,
+                  borderRadius: 10,
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: "Roboto",
+                    fontSize: 14,
+                    color: Colors.grey,
+                    margin: 10,
+                    fontWeight: "bold",
+                    alignSelf: "flex-start",
+                  }}
+                >
+                  Trending
+                </Text>
+              </View>
+              <View
+                style={{
+                  marginTop: 1,
+                  marginRight: 10,
+                  borderRadius: 10,
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: "Roboto",
+                    fontSize: 14,
+                    color: Colors.grey,
+                    margin: 10,
+                    fontWeight: "bold",
+                    alignSelf: "flex-start",
+                  }}
+                >
+                  Stocks
+                </Text>
+              </View>
+              <View
+                style={{
+                  marginTop: 1,
+                  marginRight: 10,
+                  borderRadius: 10,
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: "Roboto",
+                    fontSize: 14,
+                    color: Colors.grey,
+                    margin: 10,
+                    fontWeight: "bold",
+                    alignSelf: "flex-start",
+                  }}
+                >
+                  States
+                </Text>
+              </View>
+              <View
+                style={{
+                  marginTop: 1,
+                  marginRight: 10,
+                  borderRadius: 10,
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: "Roboto",
+                    fontSize: 14,
+                    color: Colors.grey,
+                    margin: 10,
+                    fontWeight: "bold",
+                    alignSelf: "flex-start",
+                  }}
+                >
+                  National
+                </Text>
+              </View>
+              <View
+                style={{
+                  marginTop: 1,
+                  marginRight: 10,
+                  borderRadius: 10,
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: "Roboto",
+                    fontSize: 14,
+                    color: Colors.grey,
+                    margin: 10,
+                    fontWeight: "bold",
+                    alignSelf: "flex-start",
+                  }}
+                >
+                  News
+                </Text>
+              </View>
+            </ScrollView>
+          </View>
         </View>
       </View>
     </View>
