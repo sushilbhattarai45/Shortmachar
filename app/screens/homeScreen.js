@@ -110,6 +110,9 @@ export default function HomeScreen() {
               <View
                 style={{
                   marginTop: 10,
+                  flex: 1,
+                  width: "100%",
+                  display: "flex",
                   marginRight: 10,
                   borderRadius: 10,
                 }}
@@ -117,8 +120,8 @@ export default function HomeScreen() {
                 <Image
                   style={{
                     borderRadius: 10,
+                    width: "100%",
                   }}
-                  width={300}
                   height={200}
                   source={{
                     uri: "https://cdn.hashnode.com/res/hashnode/image/upload/v1707582038715/706edfe1-8154-4fec-b6fc-573de32adcd5.png",
@@ -138,7 +141,7 @@ export default function HomeScreen() {
                   }}
                 >
                   Mastering React: A Guide to Events, State, and Hooks for
-                  Dynamic UrIs|| Lesson - 3
+                  Dynamic UrIs||
                 </Text>
               </View>
               <View
@@ -385,7 +388,7 @@ export default function HomeScreen() {
                   borderRadius: 10,
                 }}
               >
-                <Link href={"./newsScreen"}>
+                <Link href={"./screens/newsScreen"}>
                   <View
                     style={{
                       flex: 1,

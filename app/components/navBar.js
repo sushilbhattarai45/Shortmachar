@@ -13,6 +13,7 @@ export default function NavBar() {
 
         flexDirection: "row",
         top: 2,
+        left: 12,
         zIndex: 20,
       }}
     >
@@ -22,8 +23,8 @@ export default function NavBar() {
           flexDirection: "row",
         }}
       >
-        <Link href="../screens/homeScreen">
-          <Feather name="arrow-left" size={24} color="black" />
+        <Link href="./homeScreen">
+          <Feather name="arrow-left" size={24} color="white" />
         </Link>
       </View>
       <View>
@@ -31,9 +32,9 @@ export default function NavBar() {
           style={{
             fontFamily: "Roboto",
             fontSize: 16,
-            marginLeft: 20,
+            marginLeft: 24,
             fontWeight: "bold",
-            color: Colors.primary,
+            color: Colors.white,
             alignSelf: "flex-start",
           }}
         >

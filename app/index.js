@@ -14,7 +14,7 @@ export default function Index() {
         flex: 1,
       }}
     >
-      <NewsScreen />
+      <HomeScreen />
     </View>
   );
 }
