@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import { Link } from "expo-router";
 import { useLocalSearchParams } from "expo-router";
 import HomeScreen from "./screens/homeScreen";
+import NewsScreen from "./screens/newsScreen";
 
 export default function Index() {
   const { slug } = useLocalSearchParams();
@@ -10,15 +11,10 @@ export default function Index() {
   return (
     <View
       style={{
-        margin: 12,
-        marginBottom: -10,
         flex: 1,
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
       }}
     >
-      <HomeScreen />
+      <NewsScreen />
     </View>
   );
 }
