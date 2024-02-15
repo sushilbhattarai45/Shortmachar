@@ -78,7 +78,7 @@ export default function HomeScreen() {
             onChangeText={setSearchQuery}
             value={searchQuery}
           />
-          <View style={{ marginTop: 10, flex: 0.04 }}>
+          <View style={{ marginTop: 10, flex: 0.07 }}>
             <Text
               style={{
                 fontFamily: "Roboto",
@@ -93,7 +93,7 @@ export default function HomeScreen() {
           </View>
           <View
             style={{
-              flex: 0.36,
+              flex: 0.6,
               display: "flex",
               flexDirection: "row",
               alignContent: "center",
@@ -209,9 +209,9 @@ export default function HomeScreen() {
           </View>
           <View
             style={{
-              flex: 0.16,
+              flex: 0.12,
               display: "flex",
-
+              marginTop: 4,
               flexDirection: "row",
               alignContent: "center",
               justifyContent: "center",
@@ -340,6 +340,41 @@ export default function HomeScreen() {
                 >
                   News
                 </Text>
+              </View>
+            </ScrollView>
+          </View>
+          <View>
+            <Text
+              style={{
+                fontFamily: "Roboto",
+                fontSize: 16,
+                fontWeight: "bold",
+                color: Colors.primary,
+                alignSelf: "flex-start",
+              }}
+            >
+              Trending
+            </Text>
+          </View>
+          <View
+            style={{
+              flex: 0.9,
+              display: "flex",
+
+              flexDirection: "row",
+              alignContent: "center",
+              justifyContent: "center",
+            }}
+          >
+            <ScrollView showsHorizontalScrollIndicator={false}>
+              <View
+                style={{
+                  marginTop: 1,
+                  marginRight: 10,
+                  borderRadius: 10,
+                }}
+              >
+                <View></View>
               </View>
             </ScrollView>
           </View>
