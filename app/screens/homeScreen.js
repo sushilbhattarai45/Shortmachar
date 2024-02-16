@@ -51,14 +51,25 @@ export default function HomeScreen() {
               flex: 0.5,
             }}
           >
-            <FontAwesome5
+            {/* <FontAwesome5
               style={{
                 alignSelf: "flex-end",
               }}
               name="user"
               size={24}
               color="black"
-            />
+            /> */}
+            <Text
+              style={{
+                fontFamily: "Roboto",
+                fontSize: 16,
+                fontWeight: "bold",
+                color: Colors.black,
+                alignSelf: "flex-end",
+              }}
+            >
+              My Feed{" "}
+            </Text>
           </View>
         </View>
         <View
