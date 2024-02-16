@@ -49,8 +49,26 @@ export default function HomeScreen() {
           <View
             style={{
               flex: 0.5,
+              alignContent: "flex-end",
+              position: "absolute",
+              right: 0,
             }}
           >
+            <Link href="screens/myFeedScreen">
+              <Text
+                style={{
+                  fontFamily: "Roboto",
+                  fontSize: 16,
+                  fontWeight: "bold",
+                  color: Colors.black,
+
+                  alignSelf: "flex-end",
+                }}
+              >
+                My Feed{" "}
+              </Text>
+            </Link>
+
             {/* <FontAwesome5
               style={{
                 alignSelf: "flex-end",
@@ -59,17 +77,6 @@ export default function HomeScreen() {
               size={24}
               color="black"
             /> */}
-            <Text
-              style={{
-                fontFamily: "Roboto",
-                fontSize: 16,
-                fontWeight: "bold",
-                color: Colors.black,
-                alignSelf: "flex-end",
-              }}
-            >
-              My Feed{" "}
-            </Text>
           </View>
         </View>
         <View
@@ -399,7 +406,7 @@ export default function HomeScreen() {
                   borderRadius: 10,
                 }}
               >
-                <Link href={"./screens/newsScreen"}>
+                <Link href={"screens/newsScreen"}>
                   <View
                     style={{
                       flex: 1,

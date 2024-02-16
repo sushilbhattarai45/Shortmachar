@@ -15,8 +15,7 @@ export default function Index() {
         flex: 1,
       }}
     >
-      {/* <HomeScreen /> */}
-      <MyFeed />
+      <HomeScreen />
     </View>
   );
 }
