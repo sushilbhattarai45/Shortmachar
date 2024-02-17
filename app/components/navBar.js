@@ -23,9 +23,9 @@ export default function NavBar() {
           flexDirection: "row",
         }}
       >
-        <Link href="./homeScreen">
-          <Feather name="arrow-left" size={24} color="white" />
-        </Link>
+        {/* <Link href="./homeScreen"> */}
+        <Feather name="arrow-left" size={24} color="white" />
+        {/* </Link> */}
       </View>
       <View>
         <Text
