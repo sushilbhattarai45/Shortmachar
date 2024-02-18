@@ -2,10 +2,12 @@ import React from "react";
 import { View, Text, Image, Dimensions, FlatList } from "react-native";
 import NavBar from "../components/navBar";
 import { Colors } from "../components/colors";
+import { useRouter } from "expo-router";
 
 export default function MyFeed() {
   const windowHeight = Dimensions.get("window").height;
   const windowWidth = Dimensions.get("window").width;
+  const router = useRouter();
 
   const data = [
     {
@@ -186,7 +188,7 @@ export default function MyFeed() {
         flex: 1,
       }}
     >
-      <NavBar />
+      <NavBar back={router.back} />
       <FlatList
         data={data}
         renderItem={renderItem}

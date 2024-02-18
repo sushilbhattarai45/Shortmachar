@@ -1,11 +1,12 @@
 import React from "react";
 import { View, Text, ImageBackground, Image, ScrollView } from "react-native";
 import { useLocalSearchParams } from "expo-router";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { Colors } from "../components/colors";
 import { Searchbar } from "react-native-paper";
 import { FontAwesome5 } from "@expo/vector-icons";
 export default function HomeScreen() {
+  const router = useRouter();
   const { slug } = useLocalSearchParams();
   const [searchQuery, setSearchQuery] = React.useState("");
 
@@ -54,7 +55,7 @@ export default function HomeScreen() {
               right: 0,
             }}
           >
-            <Link href="screens/myFeedScreen">
+            <Link href={"/screens/myFeedScreen"}>
               <Text
                 style={{
                   fontFamily: "Roboto",

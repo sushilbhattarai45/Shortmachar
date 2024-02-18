@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { Colors } from "./colors";
-export default function NavBar() {
+export default function NavBar({ back }) {
   return (
     <View
       style={{
@@ -23,9 +23,12 @@ export default function NavBar() {
           flexDirection: "row",
         }}
       >
-        {/* <Link href="./homeScreen"> */}
-        <Feather name="arrow-left" size={24} color="white" />
-        {/* </Link> */}
+        <Feather
+          onPress={() => router.back()}
+          name="arrow-left"
+          size={24}
+          color="white"
+        />
       </View>
       <View>
         <Text
