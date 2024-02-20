@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { View, Text, ImageBackground, Image, ScrollView } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { Link, useRouter } from "expo-router";
 import { Colors } from "../components/colors";
 import { Searchbar } from "react-native-paper";
 import { FontAwesome5 } from "@expo/vector-icons";
+import AppContext from "../components/appContext";
 export default function HomeScreen() {
   const router = useRouter();
+  const [newsData, setNewsData] = useState([]);
+  const { news, setNews } = useContext(AppContext);
+  useEffect(() => {
+    setNewsData(news.articles);
+    loopn();
+  }, []);
+
+  const loopn = () => {
+    // news.articles.map((item) => {
+    //   console.log(item.title);
+    // });
+  };
+
   const { slug } = useLocalSearchParams();
   const [searchQuery, setSearchQuery] = React.useState("");
 

@@ -5,7 +5,8 @@ import { useLocalSearchParams } from "expo-router";
 import HomeScreen from "./screens/homeScreen";
 import NewsScreen from "./screens/newsScreen";
 import MyFeed from "./screens/myFeedScreen";
-
+import hitApi from "./components/hitApi";
+import { ContextProvider } from "./components/appContext";
 export default function Index() {
   const { slug } = useLocalSearchParams();
 
@@ -15,7 +16,9 @@ export default function Index() {
         flex: 1,
       }}
     >
-      <HomeScreen />
+      <ContextProvider>
+        <HomeScreen />
+      </ContextProvider>
     </View>
   );
 }
