@@ -137,48 +137,54 @@ export default function HomeScreen() {
             }}
           >
             <ScrollView
+              pagingEnabled={true}
               style={{ display: "flex" }}
               showsHorizontalScrollIndicator={false}
               horizontal={true}
             >
-              <View
-                style={{
-                  marginTop: 10,
-                  flex: 1,
-                  width: "100%",
-                  display: "flex",
-                  marginRight: 10,
-                  borderRadius: 10,
-                }}
-              >
-                <Image
-                  style={{
-                    borderRadius: 10,
-                    width: "100%",
-                  }}
-                  height={200}
-                  source={{
-                    uri: "https://cdn.hashnode.com/res/hashnode/image/upload/v1707582038715/706edfe1-8154-4fec-b6fc-573de32adcd5.png",
-                  }}
-                />
-                <Text
-                  style={{
-                    fontFamily: "Roboto",
-                    fontSize: 12,
-                    margin: 10,
-                    marginTop: -50,
-                    width: 270,
-                    display: "wrap",
-                    fontWeight: "bold",
-                    color: Colors.white,
-                    alignSelf: "flex-start",
-                  }}
-                >
-                  Mastering React: A Guide to Events, State, and Hooks for
-                  Dynamic UrIs||
-                </Text>
-              </View>
-              <View
+              {news?.articles?.map((item, key) => {
+                if (key <= 20)
+                  return (
+                    <View
+                      style={{
+                        marginTop: 10,
+                        flex: 1,
+                        width: "100%",
+                        display: "flex",
+                        marginRight: 10,
+                        borderRadius: 10,
+                      }}
+                    >
+                      <Image
+                        style={{
+                          borderRadius: 10,
+                          width: "100%",
+                        }}
+                        height={200}
+                        source={{
+                          uri: "https://cdn.hashnode.com/res/hashnode/image/upload/v1707582038715/706edfe1-8154-4fec-b6fc-573de32adcd5.png",
+                        }}
+                      />
+                      <Text
+                        style={{
+                          fontFamily: "Roboto",
+                          fontSize: 12,
+                          margin: 10,
+                          marginTop: -50,
+                          width: 270,
+                          display: "wrap",
+                          fontWeight: "bold",
+                          color: Colors.white,
+                          alignSelf: "flex-start",
+                        }}
+                      >
+                        {item.title}
+                      </Text>
+                    </View>
+                  );
+              })}
+
+              {/* <View
                 style={{
                   marginTop: 10,
                   marginRight: 10,
@@ -243,7 +249,7 @@ export default function HomeScreen() {
                   Mastering React: A Guide to Events, State, and Hooks for
                   Dynamic UrIs|| Lesson - 3
                 </Text>
-              </View>
+              </View> */}
             </ScrollView>
           </View>
           <View
@@ -281,6 +287,7 @@ export default function HomeScreen() {
                   News
                 </Text>
               </View>
+
               <View
                 style={{
                   marginTop: 1,
