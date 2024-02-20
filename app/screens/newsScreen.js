@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, Image } from "react-native";
 import NavBar from "../components/navBar";
 import { Colors } from "../components/colors";
+import { useLocalSearchParams } from "expo-router";
+export default function NewsScreen({}) {
+  useEffect(() => {}, [params]);
+  const params = useLocalSearchParams();
+  const { title, image, author, description, content, publishedAt } = params;
 
-export default function NewsScreen() {
   return (
     <View
       style={{
@@ -31,7 +35,7 @@ export default function NewsScreen() {
               resizeMode: "contain",
             }}
             source={{
-              uri: "https://cdn.hashnode.com/res/hashnode/image/upload/v1707582038715/706edfe1-8154-4fec-b6fc-573de32adcd5.png",
+              uri: image,
             }}
           />
         </View>
@@ -90,8 +94,7 @@ export default function NewsScreen() {
                 alignSelf: "flex-start",
               }}
             >
-              Mastering React: A Guide to Events, State, and Hooks for Dynamic
-              UrIs|| Lesson - 3
+              {title}
             </Text>
             <Text
               style={{
@@ -104,7 +107,7 @@ export default function NewsScreen() {
                 alignSelf: "flex-start",
               }}
             >
-              8th Aug 2023
+              {publishedAt?.split("T")[0]}{" "}
             </Text>
             <Text
               style={{
@@ -117,7 +120,7 @@ export default function NewsScreen() {
                 alignSelf: "flex-start",
               }}
             >
-              The Annapurna Post{" "}
+              {author}
             </Text>
           </View>
         </View>
@@ -146,19 +149,7 @@ export default function NewsScreen() {
             alignSelf: "flex-start",
           }}
         >
-          This happens, for example, when a lot of users want to access
-          information about a very popular product, causing the partition
-          holding this product's data to become overloaded. To spread the
-          requests more evenly, you might adjust how keys are distributed, such
-          as by adding a random number to the end of product IDs. This approach
-          makes sure no single partition gets too overloaded. However, it's
-          important to watch how the system is doing because changing how keys
-          are set up too much can make it harder to find information. For
-          instance, if we give each sale of the same product a slightly
-          different ID by adding random numbers, these sales might be stored in
-          different places. While each sale's details stay in one partition, to
-          get all sales information for one product, you might have to look in
-          many partitions.
+          {description}
         </Text>
       </View>
     </View>

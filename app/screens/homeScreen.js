@@ -18,11 +18,14 @@ export default function HomeScreen() {
   const width = Dimensions.get("window").width;
   const router = useRouter();
   const [newsData, setNewsData] = useState([]);
+  const { slug } = useLocalSearchParams();
+
   const { news, setNews } = useContext(AppContext);
+  const sushil = "Sush";
   useEffect(() => {
     setNewsData(news.articles);
     loopn();
-  }, []);
+  }, [sushil]);
 
   const loopn = () => {
     // news.articles.map((item) => {
@@ -30,7 +33,6 @@ export default function HomeScreen() {
     // });
   };
 
-  const { slug } = useLocalSearchParams();
   const [searchQuery, setSearchQuery] = React.useState("");
 
   return (
@@ -451,7 +453,17 @@ export default function HomeScreen() {
                     return (
                       <Link
                         style={{ marginTop: 5, marginBottom: 5 }}
-                        href={"screens/newsScreen"}
+                        href={{
+                          pathname: "screens/newsScreen",
+                          params: {
+                            title: item.title,
+                            image: item.urlToImage,
+                            author: item.author,
+                            description: item.description,
+                            content: item.content,
+                            publishedAt: item.publishedAt,
+                          },
+                        }}
                       >
                         <View
                           style={{
