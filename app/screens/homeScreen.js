@@ -464,7 +464,7 @@ export default function HomeScreen() {
                         >
                           <View
                             style={{
-                              flex: 0.4,
+                              flex: 0.2,
                             }}
                           >
                             <Image
@@ -485,11 +485,14 @@ export default function HomeScreen() {
                           >
                             <Text
                               style={{
+                                flex: 1,
                                 fontFamily: "Roboto",
                                 fontSize: 12,
                                 marginLeft: 10,
-                                width: width - 50,
                                 marginTop: 5,
+                                width: 240,
+                                flexWrap: "wrap",
+
                                 fontWeight: "bold",
                                 color: Colors.black,
                                 alignSelf: "flex-start",
