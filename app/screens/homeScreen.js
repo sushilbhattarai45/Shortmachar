@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
-import { View, Text, ImageBackground, Image, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  ImageBackground,
+  Image,
+  ScrollView,
+  Dimensions,
+} from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { Link, useRouter } from "expo-router";
 import { Colors } from "../components/colors";
@@ -8,6 +15,7 @@ import { Searchbar } from "react-native-paper";
 import { FontAwesome5 } from "@expo/vector-icons";
 import AppContext from "../components/appContext";
 export default function HomeScreen() {
+  const width = Dimensions.get("window").width;
   const router = useRouter();
   const [newsData, setNewsData] = useState([]);
   const { news, setNews } = useContext(AppContext);
@@ -143,15 +151,20 @@ export default function HomeScreen() {
               horizontal={true}
             >
               {news?.articles?.map((item, key) => {
-                if (key <= 20)
+                if (
+                  key <= 10 &&
+                  item.title !== null &&
+                  item.title !== "[Removed]"
+                )
                   return (
                     <View
                       style={{
                         marginTop: 10,
                         flex: 1,
-                        width: "100%",
+                        width: width - 30,
                         display: "flex",
                         marginRight: 10,
+                        alignSelf: "center",
                         borderRadius: 10,
                       }}
                     >
@@ -162,7 +175,7 @@ export default function HomeScreen() {
                         }}
                         height={200}
                         source={{
-                          uri: "https://cdn.hashnode.com/res/hashnode/image/upload/v1707582038715/706edfe1-8154-4fec-b6fc-573de32adcd5.png",
+                          uri: item.urlToImage,
                         }}
                       />
                       <Text
@@ -429,84 +442,95 @@ export default function HomeScreen() {
                   borderRadius: 10,
                 }}
               >
-                <Link href={"screens/newsScreen"}>
-                  <View
-                    style={{
-                      flex: 1,
-                      height: 80,
-                      marginTop: 10,
-                      marginBottom: 12,
-                      width: "100%",
-                      flexDirection: "row",
-                    }}
-                  >
-                    <View
-                      style={{
-                        flex: 0.4,
-                      }}
-                    >
-                      <Image
-                        style={{
-                          borderRadius: 10,
-                          width: 100,
-                          height: "100%",
-                        }}
-                        source={{
-                          uri: "https://cdn.hashnode.com/res/hashnode/image/upload/v1707582038715/706edfe1-8154-4fec-b6fc-573de32adcd5.png",
-                        }}
-                      ></Image>
-                    </View>
-                    <View
-                      style={{
-                        flex: 0.8,
-                      }}
-                    >
-                      <Text
-                        style={{
-                          fontFamily: "Roboto",
-                          fontSize: 12,
-                          marginLeft: 10,
-                          width: 270,
+                {news?.articles?.map((item, key) => {
+                  if (
+                    key <= 10 &&
+                    item.title !== null &&
+                    item.title !== "[Removed]"
+                  ) {
+                    return (
+                      <Link
+                        style={{ marginTop: 5, marginBottom: 5 }}
+                        href={"screens/newsScreen"}
+                      >
+                        <View
+                          style={{
+                            flex: 1,
+                            height: 80,
 
-                          marginTop: 5,
-                          fontWeight: "bold",
-                          color: Colors.black,
-                          alignSelf: "flex-start",
-                        }}
-                      >
-                        Mastering React: A Guide to Events, State, and Hooks for
-                        Dynamic UrIs|| Lesson - 3
-                      </Text>
-                      <Text
-                        style={{
-                          fontFamily: "Roboto",
-                          fontSize: 12,
-                          marginLeft: 10,
-                          width: 270,
-                          fontWeight: "bold",
-                          color: Colors.grey,
-                          alignSelf: "flex-start",
-                        }}
-                      >
-                        8th Aug 2023
-                      </Text>
-                      <Text
-                        style={{
-                          fontFamily: "Roboto",
-                          fontSize: 12,
-                          marginLeft: 10,
-                          width: 270,
-                          fontWeight: "bold",
-                          color: Colors.grey,
-                          alignSelf: "flex-start",
-                        }}
-                      >
-                        The Annapurna Post{" "}
-                      </Text>
-                    </View>
-                  </View>
-                </Link>
-                <View
+                            width: "100%",
+                            flexDirection: "row",
+                          }}
+                        >
+                          <View
+                            style={{
+                              flex: 0.4,
+                            }}
+                          >
+                            <Image
+                              style={{
+                                borderRadius: 10,
+                                width: 100,
+                                height: "100%",
+                              }}
+                              source={{
+                                uri: item.urlToImage,
+                              }}
+                            ></Image>
+                          </View>
+                          <View
+                            style={{
+                              flex: 0.8,
+                            }}
+                          >
+                            <Text
+                              style={{
+                                fontFamily: "Roboto",
+                                fontSize: 12,
+                                marginLeft: 10,
+                                width: width - 50,
+                                marginTop: 5,
+                                fontWeight: "bold",
+                                color: Colors.black,
+                                alignSelf: "flex-start",
+                              }}
+                            >
+                              {item.title}
+                            </Text>
+                            <Text
+                              style={{
+                                fontFamily: "Roboto",
+                                fontSize: 12,
+                                marginLeft: 10,
+                                width: 270,
+                                fontWeight: "bold",
+                                color: Colors.grey,
+                                alignSelf: "flex-start",
+                              }}
+                            >
+                              {item.publishedAt.split("T")[0]}{" "}
+                            </Text>
+                            <Text
+                              style={{
+                                fontFamily: "Roboto",
+                                fontSize: 12,
+                                marginLeft: 10,
+                                width: 270,
+                                fontWeight: "bold",
+                                color: Colors.grey,
+                                alignSelf: "flex-start",
+                              }}
+                            >
+                              {item.author}
+                            </Text>
+                          </View>
+                        </View>
+                      </Link>
+                    );
+                  }
+                })}
+
+                {/* <View
                   style={{
                     flex: 1,
                     height: 80,
@@ -798,7 +822,7 @@ export default function HomeScreen() {
                       The Annapurna Post{" "}
                     </Text>
                   </View>
-                </View>
+                </View> */}
               </View>
             </ScrollView>
           </View>
