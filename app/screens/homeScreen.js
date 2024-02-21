@@ -7,6 +7,7 @@ import {
   Image,
   ScrollView,
   Dimensions,
+  TouchableOpacity,
 } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { Link, useRouter } from "expo-router";
@@ -448,99 +449,108 @@ export default function HomeScreen() {
                   if (
                     key <= 10 &&
                     item.title !== null &&
-                    item.title !== "[Removed]"
+                    item.title !== "[Removed]" &&
+                    item.description != (null || undefined) &&
+                    item.urlToImage !== (null || undefined) &&
+                    item.publishedAt !== null &&
+                    item.author != null
                   ) {
                     return (
-                      <Link
-                        style={{ marginTop: 5, marginBottom: 5 }}
-                        href={{
-                          pathname: "screens/newsScreen",
-                          params: {
-                            title: item.title,
-                            image: item.urlToImage,
-                            author: item.author,
-                            description: item.description,
-                            content: item.content,
-                            publishedAt: item.publishedAt,
-                          },
+                      // <Link
+                      //   style={{ marginTop: 5, marginBottom: 5 }}
+                      //   href={{
+                      //     pathname: "screens/newsScreen",
+                      //     params: {},
+                      //   }}
+                      // >
+                      <TouchableOpacity
+                        onPress={() => {
+                          router.push({
+                            pathname: "screens/newsScreen",
+                            params: {
+                              title: item.title,
+                              // title: item.title,
+                              // image: item?.urlToImage,
+                              // author: item?.author,
+                              // // description: item?.description,
+                              // publishedAt: item?.publishedAt,
+                            },
+                          });
+                        }}
+                        style={{
+                          flex: 1,
+                          height: 80,
+                          width: "100%",
+                          flexDirection: "row",
                         }}
                       >
                         <View
                           style={{
-                            flex: 1,
-                            height: 80,
-
-                            width: "100%",
-                            flexDirection: "row",
+                            flex: 0.2,
                           }}
                         >
-                          <View
+                          <Image
                             style={{
-                              flex: 0.2,
+                              borderRadius: 10,
+                              width: 100,
+                              height: "100%",
                             }}
-                          >
-                            <Image
-                              style={{
-                                borderRadius: 10,
-                                width: 100,
-                                height: "100%",
-                              }}
-                              source={{
-                                uri: item.urlToImage,
-                              }}
-                            ></Image>
-                          </View>
-                          <View
-                            style={{
-                              flex: 0.8,
+                            source={{
+                              uri: item.urlToImage,
                             }}
-                          >
-                            <Text
-                              style={{
-                                flex: 1,
-                                fontFamily: "Roboto",
-                                fontSize: 12,
-                                marginLeft: 10,
-                                marginTop: 5,
-                                width: 240,
-                                flexWrap: "wrap",
-
-                                fontWeight: "bold",
-                                color: Colors.black,
-                                alignSelf: "flex-start",
-                              }}
-                            >
-                              {item.title}
-                            </Text>
-                            <Text
-                              style={{
-                                fontFamily: "Roboto",
-                                fontSize: 12,
-                                marginLeft: 10,
-                                width: 270,
-                                fontWeight: "bold",
-                                color: Colors.grey,
-                                alignSelf: "flex-start",
-                              }}
-                            >
-                              {item.publishedAt.split("T")[0]}{" "}
-                            </Text>
-                            <Text
-                              style={{
-                                fontFamily: "Roboto",
-                                fontSize: 12,
-                                marginLeft: 10,
-                                width: 270,
-                                fontWeight: "bold",
-                                color: Colors.grey,
-                                alignSelf: "flex-start",
-                              }}
-                            >
-                              {item.author}
-                            </Text>
-                          </View>
+                          ></Image>
                         </View>
-                      </Link>
+                        <View
+                          style={{
+                            flex: 0.8,
+                          }}
+                        >
+                          <Text
+                            style={{
+                              flex: 1,
+                              fontFamily: "Roboto",
+                              fontSize: 12,
+                              marginLeft: 10,
+                              marginTop: 5,
+                              width: 240,
+                              flexWrap: "wrap",
+
+                              fontWeight: "bold",
+                              color: Colors.black,
+                              alignSelf: "flex-start",
+                            }}
+                          >
+                            {item.title}
+                          </Text>
+                          <Text
+                            style={{
+                              fontFamily: "Roboto",
+                              fontSize: 12,
+                              marginLeft: 10,
+                              width: 270,
+                              fontWeight: "bold",
+                              color: Colors.grey,
+                              alignSelf: "flex-start",
+                            }}
+                          >
+                            {item.publishedAt.split("T")[0]}{" "}
+                          </Text>
+                          <Text
+                            style={{
+                              fontFamily: "Roboto",
+                              fontSize: 12,
+                              marginLeft: 10,
+                              width: 270,
+                              fontWeight: "bold",
+                              color: Colors.grey,
+                              alignSelf: "flex-start",
+                            }}
+                          >
+                            {item.author}
+                          </Text>
+                        </View>
+                      </TouchableOpacity>
+                      // </Link>
                     );
                   }
                 })}

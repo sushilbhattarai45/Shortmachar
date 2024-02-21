@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
+import { useContext } from "react";
+
 import { View, Text, Image } from "react-native";
 import NavBar from "../components/navBar";
 import { Colors } from "../components/colors";
 import { useLocalSearchParams } from "expo-router";
-export default function NewsScreen({}) {
-  useEffect(() => {}, [params]);
-  const params = useLocalSearchParams();
-  const { title, image, author, description, content, publishedAt } = params;
+import AppContext from "../components/appContext";
 
+export default function NewsScreen() {
+  const { news, setNews } = useContext(AppContext);
+  const params = useLocalSearchParams();
+  const { title, image, author, description, publishedAt, item } = params;
+
+  console.log(item); // console.log({ title, image, author, description, content, publishedAt });
   return (
     <View
       style={{
