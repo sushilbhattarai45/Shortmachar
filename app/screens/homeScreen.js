@@ -15,16 +15,17 @@ import { Colors } from "../components/colors";
 import { Searchbar } from "react-native-paper";
 import { FontAwesome5 } from "@expo/vector-icons";
 import AppContext from "../components/appContext";
+import hitMyApi from "../components/hitApi";
 export default function HomeScreen() {
   const width = Dimensions.get("window").width;
   const router = useRouter();
-  const [newsData, setNewsData] = useState([]);
   const { slug } = useLocalSearchParams();
 
-  const { news, setNews, chooseData } = useContext(AppContext);
+  const { news, setNews, chooseData, setChooseData } = useContext(AppContext);
+  const label = ["News", "Trending", "Stocks", "Sports", "International"];
+  const [activelabel, setActiveLabel] = useState("Trending");
   const sushil = "Sush";
   useEffect(() => {
-    setNewsData(news.articles);
     loopn();
   }, [sushil]);
 
@@ -35,6 +36,13 @@ export default function HomeScreen() {
   };
 
   const [searchQuery, setSearchQuery] = React.useState("");
+
+  const getFeaturedPosts = async (label) => {
+    const labelData = await hitMyApi(label);
+    console.log("labelData", labelData);
+
+    setChooseData(labelData);
+  };
 
   return (
     <View
@@ -140,7 +148,7 @@ export default function HomeScreen() {
           </View>
           <View
             style={{
-              flex: 0.6,
+              flex: 0.7,
               display: "flex",
               flexDirection: "row",
               alignContent: "center",
@@ -283,133 +291,55 @@ export default function HomeScreen() {
               showsHorizontalScrollIndicator={false}
               horizontal={true}
             >
-              <View
-                style={{
-                  marginTop: 1,
-                  marginRight: 10,
-                  borderRadius: 10,
-                }}
-              >
-                <Text
-                  style={{
-                    fontFamily: "Roboto",
-                    fontSize: 14,
-                    color: Colors.grey,
-                    margin: 10,
-                    marginLeft: 0,
-                    fontWeight: "bold",
-                    alignSelf: "flex-start",
-                  }}
-                >
-                  News
-                </Text>
-              </View>
-
-              <View
-                style={{
-                  marginTop: 1,
-                  marginRight: 10,
-                  borderRadius: 10,
-                }}
-              >
-                <Text
-                  style={{
-                    fontFamily: "Roboto",
-                    fontSize: 14,
-                    color: Colors.grey,
-                    margin: 10,
-                    marginLeft: 0,
-                    fontWeight: "bold",
-                    alignSelf: "flex-start",
-                  }}
-                >
-                  Trending
-                </Text>
-              </View>
-              <View
-                style={{
-                  marginTop: 1,
-                  marginRight: 10,
-                  borderRadius: 10,
-                }}
-              >
-                <Text
-                  style={{
-                    fontFamily: "Roboto",
-                    fontSize: 14,
-                    color: Colors.grey,
-                    margin: 10,
-                    marginLeft: 0,
-                    fontWeight: "bold",
-                    alignSelf: "flex-start",
-                  }}
-                >
-                  Stocks
-                </Text>
-              </View>
-              <View
-                style={{
-                  marginTop: 1,
-                  marginRight: 10,
-                  borderRadius: 10,
-                }}
-              >
-                <Text
-                  style={{
-                    fontFamily: "Roboto",
-                    fontSize: 14,
-                    color: Colors.grey,
-                    margin: 10,
-                    marginLeft: 0,
-                    fontWeight: "bold",
-                    alignSelf: "flex-start",
-                  }}
-                >
-                  States
-                </Text>
-              </View>
-              <View
-                style={{
-                  marginTop: 1,
-                  marginRight: 10,
-                  borderRadius: 10,
-                }}
-              >
-                <Text
-                  style={{
-                    fontFamily: "Roboto",
-                    fontSize: 14,
-                    color: Colors.grey,
-                    margin: 10,
-                    marginLeft: 0,
-                    fontWeight: "bold",
-                    alignSelf: "flex-start",
-                  }}
-                >
-                  National
-                </Text>
-              </View>
-              <View
-                style={{
-                  marginTop: 1,
-                  marginRight: 10,
-                  borderRadius: 10,
-                }}
-              >
-                <Text
-                  style={{
-                    fontFamily: "Roboto",
-                    fontSize: 14,
-                    color: Colors.grey,
-                    margin: 10,
-                    marginLeft: 0,
-                    fontWeight: "bold",
-                    alignSelf: "flex-start",
-                  }}
-                >
-                  News
-                </Text>
-              </View>
+              {label?.map((item, key) => {
+                return (
+                  <View
+                    style={{
+                      marginTop: 1,
+                      marginRight: 10,
+                      borderRadius: 10,
+                    }}
+                  >
+                    {activelabel == item ? (
+                      <Text
+                        onPress={() => {
+                          setActiveLabel(item);
+                          getFeaturedPosts(item);
+                        }}
+                        style={{
+                          fontFamily: "Roboto",
+                          fontSize: 14,
+                          color: Colors.primary,
+                          margin: 10,
+                          marginLeft: 0,
+                          fontWeight: "bold",
+                          alignSelf: "flex-start",
+                        }}
+                      >
+                        {item}
+                      </Text>
+                    ) : (
+                      <Text
+                        onPress={() => {
+                          setActiveLabel(item);
+                          getFeaturedPosts(item);
+                        }}
+                        style={{
+                          fontFamily: "Roboto",
+                          fontSize: 14,
+                          color: Colors.grey,
+                          margin: 10,
+                          marginLeft: 0,
+                          fontWeight: "bold",
+                          alignSelf: "flex-start",
+                        }}
+                      >
+                        {item}
+                      </Text>
+                    )}
+                  </View>
+                );
+              })}
             </ScrollView>
           </View>
           <View>
@@ -422,7 +352,7 @@ export default function HomeScreen() {
                 alignSelf: "flex-start",
               }}
             >
-              Trending
+              {activelabel}
             </Text>
           </View>
           <View
