@@ -29,10 +29,10 @@ export default function NewsScreen() {
 
       <View
         style={{
-          flex: 0.18,
+          flex: 0.5,
           display: "flex",
           alignItems: "center",
-          marginBottom: 20,
+          // marginBottom: 20,
           flexDirection: "row",
         }}
       >
@@ -51,8 +51,7 @@ export default function NewsScreen() {
       </View>
       <View
         style={{
-          flex: 0.1,
-          marginTop: 30,
+          flex: 0.15,
           display: "flex",
           alignContent: "center",
           justifyContent: "center",
@@ -63,7 +62,7 @@ export default function NewsScreen() {
           style={{
             flex: 1,
             height: 80,
-            marginTop: 10,
+            // marginTop: 10,
             marginBottom: 12,
             width: "100%",
             flexDirection: "row",
@@ -136,14 +135,14 @@ export default function NewsScreen() {
       </View>
       <View
         style={{
-          marginTop: 20,
+          marginTop: 10,
           height: 1,
           backgroundColor: Colors.primary,
         }}
       ></View>
       <View
         style={{
-          flex: 0.8,
+          flex: 0.99,
           margin: 12,
           marginTop: 20,
         }}
