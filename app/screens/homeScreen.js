@@ -46,7 +46,6 @@ export default function HomeScreen() {
     <View
       style={{
         margin: 16,
-        marginBottom: -30,
         flex: 1,
       }}
     >
@@ -54,13 +53,13 @@ export default function HomeScreen() {
         style={{
           display: "flex",
           flex: 1,
-
+          marginTop: 20,
           flexDirection: "column",
         }}
       >
         <View
           style={{
-            flex: 0.09,
+            flex: 0.07,
             display: "flex",
             alignItems: "center",
             flexDirection: "row",
@@ -114,8 +113,8 @@ export default function HomeScreen() {
         </View>
         <View
           style={{
-            marginTop: 8,
-            flex: 0.9,
+            // marginTop: 8,
+            flex: 0.93,
           }}
         >
           <Searchbar
@@ -135,7 +134,7 @@ export default function HomeScreen() {
             onChangeText={setSearchQuery}
             value={searchQuery}
           />
-          <View style={{ marginTop: 10, flex: 0.07 }}>
+          <View style={{ marginTop: 11, flex: 0.07 }}>
             <Text
               style={{
                 fontFamily: "Roboto",
@@ -150,7 +149,7 @@ export default function HomeScreen() {
           </View>
           <View
             style={{
-              flex: 0.7,
+              flex: 0.6,
               display: "flex",
               flexDirection: "row",
               alignContent: "center",
@@ -171,9 +170,18 @@ export default function HomeScreen() {
                   item.urlToImage != null
                 )
                   return (
-                    <View
+                    <TouchableOpacity
+                      onPress={() => {
+                        router.push({
+                          pathname: "screens/newsScreen",
+                          params: {
+                            featured: true,
+                            key: key,
+                          },
+                        });
+                      }}
                       style={{
-                        marginTop: 10,
+                        // marginTop: 10,
                         flex: 1,
                         width: width - 50,
                         display: "flex",
@@ -207,76 +215,9 @@ export default function HomeScreen() {
                       >
                         {item.title}
                       </Text>
-                    </View>
+                    </TouchableOpacity>
                   );
               })}
-
-              {/* <View
-                style={{
-                  marginTop: 10,
-                  marginRight: 10,
-                  borderRadius: 10,
-                }}
-              >
-                <Image
-                  style={{
-                    borderRadius: 10,
-                  }}
-                  width={300}
-                  height={200}
-                  source={{
-                    uri: "https://cdn.hashnode.com/res/hashnode/image/upload/v1707582038715/706edfe1-8154-4fec-b6fc-573de32adcd5.png",
-                  }}
-                />
-                <Text
-                  style={{
-                    fontFamily: "Roboto",
-                    fontSize: 12,
-                    margin: 10,
-                    marginTop: -50,
-                    width: 270,
-                    display: "wrap",
-                    fontWeight: "bold",
-                    color: Colors.white,
-                    alignSelf: "flex-start",
-                  }}
-                >
-                  Mastering React: A Guide to Events, State, and Hooks for
-                  Dynamic UrIs|| Lesson - 3
-                </Text>
-              </View>
-              <View
-                style={{
-                  marginTop: 10,
-                  marginRight: 10,
-                  borderRadius: 10,
-                }}
-              >
-                <Image
-                  style={{
-                    borderRadius: 10,
-                  }}
-                  width={300}
-                  height={200}
-                  source={{ uri: "https://legacy.reactjs.org/logo-og.png" }}
-                />
-                <Text
-                  style={{
-                    fontFamily: "Roboto",
-                    fontSize: 12,
-                    margin: 10,
-                    marginTop: -50,
-                    width: 270,
-                    display: "wrap",
-                    fontWeight: "bold",
-                    color: Colors.white,
-                    alignSelf: "flex-start",
-                  }}
-                >
-                  Mastering React: A Guide to Events, State, and Hooks for
-                  Dynamic UrIs|| Lesson - 3
-                </Text>
-              </View> */}
             </ScrollView>
           </View>
           <View
@@ -390,394 +331,12 @@ export default function HomeScreen() {
                     item.author != null
                   ) {
                     return (
-                      <View style={{ marginTop: 5, marginBottom: 5 }}>
-                        {/* <TouchableOpacity
-                          onPress={() => {
-                            router.push({
-                              pathname: "screens/newsScreen",
-                              params: {
-                                key: key,
-                                // title: item.title,
-                                // image: item?.urlToImage,
-                                // author: item?.author,
-                                // description: item?.description,
-                                // publishedAt: item?.publishedAt,
-                              },
-                            });
-                          }}
-                          style={{
-                            flex: 1,
-                            height: 80,
-                            width: "100%",
-                            flexDirection: "row",
-                          }}
-                        >
-                          <View
-                            style={{
-                              flex: 0.35,
-                            }}
-                          >
-                            <Image
-                              style={{
-                                borderRadius: 10,
-                                width: 100,
-                                height: "100%",
-                              }}
-                              source={{
-                                uri: item.urlToImage,
-                              }}
-                            ></Image>
-                          </View>
-                          <View
-                            style={{
-                              flex: 0.5,
-                            }}
-                          >
-                            <Text
-                              style={{
-                                flex: 1,
-                                fontFamily: "Roboto",
-                                fontSize: 12,
-                                // marginLeft: 40,
-                                marginTop: 5,
-                                width: 240,
-                                flexWrap: "wrap",
-
-                                fontWeight: "bold",
-                                color: Colors.black,
-                                alignSelf: "flex-start",
-                              }}
-                            >
-                              {item.title}
-                            </Text>
-                            <Text
-                              style={{
-                                fontFamily: "Roboto",
-                                fontSize: 12,
-                                // marginLeft: 10,
-                                width: 270,
-                                fontWeight: "bold",
-                                color: Colors.grey,
-                                alignSelf: "flex-start",
-                              }}
-                            >
-                              {item.publishedAt.split("T")[0]}{" "}
-                            </Text>
-                            <Text
-                              style={{
-                                fontFamily: "Roboto",
-                                fontSize: 12,
-                                // marginLeft: 10,
-                                width: 270,
-                                fontWeight: "bold",
-                                color: Colors.grey,
-                                alignSelf: "flex-start",
-                              }}
-                            >
-                              {item.author}
-                            </Text>
-                          </View>
-                        </TouchableOpacity> */}
-
+                      <View style={{ marginTop: 5, marginBottom: 2 }}>
                         <NewsList item={item} index={index} />
                       </View>
                     );
                   }
                 })}
-
-                {/* <View
-                  style={{
-                    flex: 1,
-                    height: 80,
-                    marginTop: 10,
-                    marginBottom: 12,
-                    width: "100%",
-                    flexDirection: "row",
-                  }}
-                >
-                  <View
-                    style={{
-                      flex: 0.3,
-                    }}
-                  >
-                    <Image
-                      style={{
-                        borderRadius: 10,
-                        width: "100%",
-                        height: "100%",
-                      }}
-                      source={{
-                        uri: "https://cdn.hashnode.com/res/hashnode/image/upload/v1707582038715/706edfe1-8154-4fec-b6fc-573de32adcd5.png",
-                      }}
-                    ></Image>
-                  </View>
-                  <View
-                    style={{
-                      flex: 0.8,
-                    }}
-                  >
-                    <Text
-                      style={{
-                        fontFamily: "Roboto",
-                        fontSize: 12,
-                        marginLeft: 10,
-                        width: 270,
-                        marginTop: 5,
-                        fontWeight: "bold",
-                        color: Colors.black,
-                        alignSelf: "flex-start",
-                      }}
-                    >
-                      Mastering React: A Guide to Events, State, and Hooks for
-                      Dynamic UrIs|| Lesson - 3
-                    </Text>
-                    <Text
-                      style={{
-                        fontFamily: "Roboto",
-                        fontSize: 12,
-                        marginLeft: 10,
-                        width: 270,
-                        fontWeight: "bold",
-                        color: Colors.grey,
-                        alignSelf: "flex-start",
-                      }}
-                    >
-                      8th Aug 2023
-                    </Text>
-                    <Text
-                      style={{
-                        fontFamily: "Roboto",
-                        fontSize: 12,
-                        marginLeft: 10,
-                        width: 270,
-                        fontWeight: "bold",
-                        color: Colors.grey,
-                        alignSelf: "flex-start",
-                      }}
-                    >
-                      The Annapurna Post{" "}
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={{
-                    flex: 1,
-                    height: 80,
-                    marginBottom: 12,
-                    width: "100%",
-                    flexDirection: "row",
-                  }}
-                >
-                  <View
-                    style={{
-                      flex: 0.3,
-                    }}
-                  >
-                    <Image
-                      style={{
-                        borderRadius: 10,
-                        width: "100%",
-                        height: "100%",
-                      }}
-                      source={{
-                        uri: "https://cdn.hashnode.com/res/hashnode/image/upload/v1707582038715/706edfe1-8154-4fec-b6fc-573de32adcd5.png",
-                      }}
-                    ></Image>
-                  </View>
-                  <View
-                    style={{
-                      flex: 0.8,
-                    }}
-                  >
-                    <Text
-                      style={{
-                        fontFamily: "Roboto",
-                        fontSize: 12,
-                        marginLeft: 10,
-                        width: 270,
-                        marginTop: 5,
-                        fontWeight: "bold",
-                        color: Colors.black,
-                        alignSelf: "flex-start",
-                      }}
-                    >
-                      Mastering React: A Guide to Events, State, and Hooks for
-                      Dynamic UrIs|| Lesson - 3
-                    </Text>
-                    <Text
-                      style={{
-                        fontFamily: "Roboto",
-                        fontSize: 12,
-                        marginLeft: 10,
-                        width: 270,
-                        fontWeight: "bold",
-                        color: Colors.grey,
-                        alignSelf: "flex-start",
-                      }}
-                    >
-                      8th Aug 2023
-                    </Text>
-                    <Text
-                      style={{
-                        fontFamily: "Roboto",
-                        fontSize: 12,
-                        marginLeft: 10,
-                        width: 270,
-                        fontWeight: "bold",
-                        color: Colors.grey,
-                        alignSelf: "flex-start",
-                      }}
-                    >
-                      The Annapurna Post{" "}
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={{
-                    flex: 1,
-                    height: 80,
-                    marginBottom: 12,
-                    width: "100%",
-                    flexDirection: "row",
-                  }}
-                >
-                  <View
-                    style={{
-                      flex: 0.3,
-                    }}
-                  >
-                    <Image
-                      style={{
-                        borderRadius: 10,
-                        width: "100%",
-                        height: "100%",
-                      }}
-                      source={{
-                        uri: "https://cdn.hashnode.com/res/hashnode/image/upload/v1707582038715/706edfe1-8154-4fec-b6fc-573de32adcd5.png",
-                      }}
-                    ></Image>
-                  </View>
-                  <View
-                    style={{
-                      flex: 0.8,
-                    }}
-                  >
-                    <Text
-                      style={{
-                        fontFamily: "Roboto",
-                        fontSize: 12,
-                        marginLeft: 10,
-                        width: 270,
-                        marginTop: 5,
-                        fontWeight: "bold",
-                        color: Colors.black,
-                        alignSelf: "flex-start",
-                      }}
-                    >
-                      Mastering React: A Guide to Events, State, and Hooks for
-                      Dynamic UrIs|| Lesson - 3
-                    </Text>
-                    <Text
-                      style={{
-                        fontFamily: "Roboto",
-                        fontSize: 12,
-                        marginLeft: 10,
-                        width: 270,
-                        fontWeight: "bold",
-                        color: Colors.grey,
-                        alignSelf: "flex-start",
-                      }}
-                    >
-                      8th Aug 2023
-                    </Text>
-                    <Text
-                      style={{
-                        fontFamily: "Roboto",
-                        fontSize: 12,
-                        marginLeft: 10,
-                        width: 270,
-                        fontWeight: "bold",
-                        color: Colors.grey,
-                        alignSelf: "flex-start",
-                      }}
-                    >
-                      The Annapurna Post{" "}
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={{
-                    flex: 1,
-                    height: 80,
-                    marginBottom: 12,
-                    width: "100%",
-                    flexDirection: "row",
-                  }}
-                >
-                  <View
-                    style={{
-                      flex: 0.3,
-                    }}
-                  >
-                    <Image
-                      style={{
-                        borderRadius: 10,
-                        width: "100%",
-                        height: "100%",
-                      }}
-                      source={{
-                        uri: "https://cdn.hashnode.com/res/hashnode/image/upload/v1707582038715/706edfe1-8154-4fec-b6fc-573de32adcd5.png",
-                      }}
-                    ></Image>
-                  </View>
-                  <View
-                    style={{
-                      flex: 0.8,
-                    }}
-                  >
-                    <Text
-                      style={{
-                        fontFamily: "Roboto",
-                        fontSize: 12,
-                        marginLeft: 10,
-                        width: 270,
-                        marginTop: 5,
-                        fontWeight: "bold",
-                        color: Colors.black,
-                        alignSelf: "flex-start",
-                      }}
-                    >
-                      Mastering React: A Guide to Events, State, and Hooks for
-                      Dynamic UrIs|| Lesson - 3
-                    </Text>
-                    <Text
-                      style={{
-                        fontFamily: "Roboto",
-                        fontSize: 12,
-                        marginLeft: 10,
-                        width: 270,
-                        fontWeight: "bold",
-                        color: Colors.grey,
-                        alignSelf: "flex-start",
-                      }}
-                    >
-                      8th Aug 2023
-                    </Text>
-                    <Text
-                      style={{
-                        fontFamily: "Roboto",
-                        fontSize: 12,
-                        marginLeft: 10,
-                        width: 270,
-                        fontWeight: "bold",
-                        color: Colors.grey,
-                        alignSelf: "flex-start",
-                      }}
-                    >
-                      The Annapurna Post{" "}
-                    </Text>
-                  </View>
-                </View> */}
               </View>
             </ScrollView>
           </View>

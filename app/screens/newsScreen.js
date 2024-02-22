@@ -9,12 +9,16 @@ import AppContext from "../components/appContext";
 export default function NewsScreen() {
   const params = useLocalSearchParams();
 
-  const { title, image, author, description, publishedAt, item, key } = params;
+  const { key, featured } = params;
   const [newsData, setNewsData] = useState({});
   const { news, setNews, chooseData } = useContext(AppContext);
   useEffect(() => {
     console.log("params", chooseData?.articles[key]);
-    setNewsData(chooseData?.articles[key]);
+    if (featured) {
+      setNewsData(news?.articles[key]);
+    } else {
+      setNewsData(chooseData?.articles[key]);
+    }
   }, []);
 
   // console.log(news); // console.log({ title, image, author, description, content, publishedAt });
