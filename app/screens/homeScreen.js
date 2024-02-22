@@ -469,11 +469,10 @@ export default function HomeScreen() {
                             pathname: "screens/newsScreen",
                             params: {
                               title: item.title,
-                              // title: item.title,
-                              // image: item?.urlToImage,
-                              // author: item?.author,
-                              // // description: item?.description,
-                              // publishedAt: item?.publishedAt,
+                              image: item?.urlToImage,
+                              author: item?.author,
+                              description: item?.description,
+                              publishedAt: item?.publishedAt,
                             },
                           });
                         }}

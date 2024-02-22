@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { useContext } from "react";
 
 import { View, Text, Image } from "react-native";
@@ -11,8 +10,7 @@ export default function NewsScreen() {
   const { news, setNews } = useContext(AppContext);
   const params = useLocalSearchParams();
   const { title, image, author, description, publishedAt, item } = params;
-
-  console.log(item); // console.log({ title, image, author, description, content, publishedAt });
+  console.log(news); // console.log({ title, image, author, description, content, publishedAt });
   return (
     <View
       style={{
