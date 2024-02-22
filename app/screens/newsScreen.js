@@ -11,10 +11,10 @@ export default function NewsScreen() {
 
   const { title, image, author, description, publishedAt, item, key } = params;
   const [newsData, setNewsData] = useState({});
-  const { news, setNews } = useContext(AppContext);
+  const { news, setNews, chooseData } = useContext(AppContext);
   useEffect(() => {
-    console.log("params", news?.articles[key]);
-    setNewsData(news?.articles[key]);
+    console.log("params", chooseData?.articles[key]);
+    setNewsData(chooseData?.articles[key]);
   }, []);
 
   // console.log(news); // console.log({ title, image, author, description, content, publishedAt });

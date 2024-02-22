@@ -21,7 +21,7 @@ export default function HomeScreen() {
   const [newsData, setNewsData] = useState([]);
   const { slug } = useLocalSearchParams();
 
-  const { news, setNews } = useContext(AppContext);
+  const { news, setNews, chooseData } = useContext(AppContext);
   const sushil = "Sush";
   useEffect(() => {
     setNewsData(news.articles);
@@ -446,7 +446,7 @@ export default function HomeScreen() {
                   borderRadius: 10,
                 }}
               >
-                {news?.articles?.map((item, key) => {
+                {chooseData?.articles?.map((item, key) => {
                   if (
                     key <= 20 &&
                     item.title !== null &&
