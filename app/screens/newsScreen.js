@@ -5,19 +5,27 @@ import NavBar from "../components/navBar";
 import { Colors } from "../components/colors";
 import { useLocalSearchParams } from "expo-router";
 import AppContext from "../components/appContext";
+import hitMyApi, { AiSummerise } from "../components/hitApi";
 
 export default function NewsScreen() {
   const params = useLocalSearchParams();
 
   const { key, featured } = params;
   const [newsData, setNewsData] = useState({});
+  const [summerisedData, setSummerisedData] = useState({});
   const { news, setNews, chooseData } = useContext(AppContext);
   useEffect(() => {
-    console.log("params", chooseData?.articles[key]);
+    console.clear();
     if (featured) {
       setNewsData(news?.articles[key]);
+      // AiSummerise(news?.articles[key].description).then((data) => {
+      //   setSummerisedData(data);
+      // });
     } else {
       setNewsData(chooseData?.articles[key]);
+      // AiSummerise(chooseData?.articles[key].description).then((data) => {
+      //   setSummerisedData(data);
+      // });
     }
   }, []);
 
@@ -55,7 +63,7 @@ export default function NewsScreen() {
       </View>
       <View
         style={{
-          flex: 0.15,
+          flex: 0.25,
           display: "flex",
           alignContent: "center",
           justifyContent: "center",
@@ -96,9 +104,9 @@ export default function NewsScreen() {
             <Text
               style={{
                 fontFamily: "Roboto",
-                fontSize: 12,
+                fontSize: 14,
                 marginLeft: 10,
-                width: 270,
+                width: 300,
 
                 marginTop: 5,
                 fontWeight: "bold",
@@ -108,38 +116,45 @@ export default function NewsScreen() {
             >
               {newsData.title}
             </Text>
-            <Text
+            <View
               style={{
-                fontFamily: "Roboto",
-                fontSize: 12,
-                marginLeft: 10,
-                width: 270,
-                fontWeight: "bold",
-                color: Colors.grey,
-                alignSelf: "flex-start",
+                display: "flex",
+                marginTop: 5,
+                flexDirection: "row",
               }}
             >
-              {newsData?.publishedAt?.split("T")[0]}{" "}
-            </Text>
-            <Text
-              style={{
-                fontFamily: "Roboto",
-                fontSize: 12,
-                marginLeft: 10,
-                width: 270,
-                fontWeight: "bold",
-                color: Colors.grey,
-                alignSelf: "flex-start",
-              }}
-            >
-              {newsData.author}
-            </Text>
+              <Text
+                style={{
+                  fontFamily: "Roboto",
+                  fontSize: 14,
+                  marginLeft: 10,
+                  fontWeight: "bold",
+                  color: Colors.grey,
+                  alignSelf: "flex-start",
+                }}
+              >
+                {newsData?.publishedAt?.split("T")[0]}{" "}
+              </Text>
+              <Text
+                style={{
+                  fontFamily: "Roboto",
+                  fontSize: 14,
+                  marginLeft: 10,
+                  fontWeight: "bold",
+                  width: 200,
+                  color: Colors.grey,
+                  alignSelf: "flex-start",
+                }}
+              >
+                {newsData.author}
+              </Text>
+            </View>
           </View>
         </View>
       </View>
       <View
         style={{
-          marginTop: 10,
+          flex: 0.001,
           height: 1,
           backgroundColor: Colors.primary,
         }}
