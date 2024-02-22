@@ -3,7 +3,13 @@ import { View, Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { Link, router } from "expo-router";
 import { Colors } from "./colors";
-export default function NavBar({ back }) {
+export default function NavBar({ back, title, color }) {
+  if (title == null) {
+    title = "Read News";
+  }
+  if (color == null) {
+    color = Colors.white;
+  }
   return (
     <View
       style={{
@@ -27,7 +33,7 @@ export default function NavBar({ back }) {
           onPress={() => router.back()}
           name="arrow-left"
           size={24}
-          color="white"
+          color={color}
         />
       </View>
       <View>
@@ -37,11 +43,11 @@ export default function NavBar({ back }) {
             fontSize: 16,
             marginLeft: 24,
             fontWeight: "bold",
-            color: Colors.white,
+            color: color,
             alignSelf: "flex-start",
           }}
         >
-          Read News
+          {title}{" "}
         </Text>
       </View>
     </View>

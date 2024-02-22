@@ -16,6 +16,7 @@ export default function Index() {
     <View
       style={{
         flex: 1,
+        backgroundColor: Colors.white,
         margin: 0,
       }}
     >
@@ -25,6 +26,7 @@ export default function Index() {
           <Stack.Screen name="screens/homeScreen" options={{}} />
           <Stack.Screen name="screens/newsScreen" options={{}} />
           <Stack.Screen name="screens/myFeedScreen" options={{}} />
+          <Stack.Screen name="screens/searchScreen" options={{}} />
         </Stack>
       </ContextProvider>
     </View>

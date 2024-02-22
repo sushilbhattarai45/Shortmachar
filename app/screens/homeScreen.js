@@ -16,38 +16,36 @@ import { Searchbar } from "react-native-paper";
 import { FontAwesome5 } from "@expo/vector-icons";
 import AppContext from "../components/appContext";
 import hitMyApi from "../components/hitApi";
+import NewsList from "../components/newslist";
 export default function HomeScreen() {
   const width = Dimensions.get("window").width;
   const router = useRouter();
-  const { slug } = useLocalSearchParams();
 
   const { news, setNews, chooseData, setChooseData } = useContext(AppContext);
   const label = ["News", "Trending", "Stocks", "Sports", "International"];
   const [activelabel, setActiveLabel] = useState("Trending");
   const sushil = "Sush";
-  useEffect(() => {
-    loopn();
-  }, [sushil]);
+  useEffect(() => {}, [sushil]);
 
-  const loopn = () => {
-    // news.articles.map((item) => {
-    //   console.log(item.title);
-    // });
+  const [searchQuery, setSearchQuery] = useState("");
+  const searchData = () => {
+    router.push({
+      pathname: "screens/searchScreen",
+      params: {
+        searchQuery: searchQuery,
+      },
+    });
   };
-
-  const [searchQuery, setSearchQuery] = React.useState("");
-
   const getFeaturedPosts = async (label) => {
     const labelData = await hitMyApi(label);
     console.log("labelData", labelData);
-
     setChooseData(labelData);
   };
 
   return (
     <View
       style={{
-        margin: 12,
+        margin: 16,
         marginBottom: -30,
         flex: 1,
       }}
@@ -62,7 +60,7 @@ export default function HomeScreen() {
       >
         <View
           style={{
-            flex: 0.06,
+            flex: 0.09,
             display: "flex",
             alignItems: "center",
             flexDirection: "row",
@@ -128,6 +126,10 @@ export default function HomeScreen() {
             style={{
               backgroundColor: Colors.searchGrey,
               borderRadius: 10,
+            }}
+            onSubmitEditing={() => {
+              searchData();
+              console.log("searchQuery", searchQuery);
             }}
             placeholder="Search"
             onChangeText={setSearchQuery}
@@ -377,6 +379,7 @@ export default function HomeScreen() {
                 }}
               >
                 {chooseData?.articles?.map((item, key) => {
+                  let index = key;
                   if (
                     key <= 20 &&
                     item.title !== null &&
@@ -388,7 +391,7 @@ export default function HomeScreen() {
                   ) {
                     return (
                       <View style={{ marginTop: 5, marginBottom: 5 }}>
-                        <TouchableOpacity
+                        {/* <TouchableOpacity
                           onPress={() => {
                             router.push({
                               pathname: "screens/newsScreen",
@@ -474,7 +477,9 @@ export default function HomeScreen() {
                               {item.author}
                             </Text>
                           </View>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
+
+                        <NewsList item={item} index={index} />
                       </View>
                     );
                   }

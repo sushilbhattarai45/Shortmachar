@@ -44,7 +44,7 @@ export default function NewsScreen() {
               resizeMode: "contain",
             }}
             source={{
-              uri: newsData.urlToImage,
+              uri: newsData?.urlToImage,
             }}
           />
         </View>

@@ -5,6 +5,7 @@ import { useLocalSearchParams } from "expo-router";
 import HomeScreen from "./screens/homeScreen";
 import NewsScreen from "./screens/newsScreen";
 import { router } from "expo-router";
+import SearchScreen from "./screens/searchScreen";
 export default function Index() {
   //   useEffect(() => {
   //     router.push("screens/homeScreen", { slug: "home" });
@@ -14,9 +15,11 @@ export default function Index() {
     <View
       style={{
         flex: 1,
-        margin: 10,
+        // margin: 10,
+        backgroundColor: "white",
       }}
     >
+      {/* <SearchScreen /> */}
       <HomeScreen />
     </View>
   );
