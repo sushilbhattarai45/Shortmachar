@@ -157,14 +157,15 @@ export default function HomeScreen() {
                 if (
                   key <= 10 &&
                   item.title !== null &&
-                  item.title !== "[Removed]"
+                  item.title !== "[Removed]" &&
+                  item.urlToImage != null
                 )
                   return (
                     <View
                       style={{
                         marginTop: 10,
                         flex: 1,
-                        width: width - 30,
+                        width: width - 50,
                         display: "flex",
                         marginRight: 10,
                         alignSelf: "center",
@@ -447,109 +448,104 @@ export default function HomeScreen() {
               >
                 {news?.articles?.map((item, key) => {
                   if (
-                    key <= 10 &&
+                    key <= 20 &&
                     item.title !== null &&
                     item.title !== "[Removed]" &&
-                    item.description != (null || undefined) &&
-                    item.urlToImage !== (null || undefined) &&
+                    item.description != null &&
+                    item.urlToImage != null &&
                     item.publishedAt !== null &&
                     item.author != null
                   ) {
                     return (
-                      // <Link
-                      //   style={{ marginTop: 5, marginBottom: 5 }}
-                      //   href={{
-                      //     pathname: "screens/newsScreen",
-                      //     params: {},
-                      //   }}
-                      // >
-                      <TouchableOpacity
-                        onPress={() => {
-                          router.push({
-                            pathname: "screens/newsScreen",
-                            params: {
-                              title: item.title,
-                              image: item?.urlToImage,
-                              author: item?.author,
-                              description: item?.description,
-                              publishedAt: item?.publishedAt,
-                            },
-                          });
-                        }}
-                        style={{
-                          flex: 1,
-                          height: 80,
-                          width: "100%",
-                          flexDirection: "row",
-                        }}
-                      >
-                        <View
+                      <View style={{ marginTop: 5, marginBottom: 5 }}>
+                        <TouchableOpacity
+                          onPress={() => {
+                            router.push({
+                              pathname: "screens/newsScreen",
+                              params: {
+                                key: key,
+                                // title: item.title,
+                                // image: item?.urlToImage,
+                                // author: item?.author,
+                                // description: item?.description,
+                                // publishedAt: item?.publishedAt,
+                              },
+                            });
+                          }}
                           style={{
-                            flex: 0.2,
+                            flex: 1,
+                            height: 80,
+                            width: "100%",
+                            flexDirection: "row",
                           }}
                         >
-                          <Image
+                          <View
                             style={{
-                              borderRadius: 10,
-                              width: 100,
-                              height: "100%",
+                              flex: 0.35,
                             }}
-                            source={{
-                              uri: item.urlToImage,
-                            }}
-                          ></Image>
-                        </View>
-                        <View
-                          style={{
-                            flex: 0.8,
-                          }}
-                        >
-                          <Text
+                          >
+                            <Image
+                              style={{
+                                borderRadius: 10,
+                                width: 100,
+                                height: "100%",
+                              }}
+                              source={{
+                                uri: item.urlToImage,
+                              }}
+                            ></Image>
+                          </View>
+                          <View
                             style={{
-                              flex: 1,
-                              fontFamily: "Roboto",
-                              fontSize: 12,
-                              marginLeft: 10,
-                              marginTop: 5,
-                              width: 240,
-                              flexWrap: "wrap",
+                              flex: 0.5,
+                            }}
+                          >
+                            <Text
+                              style={{
+                                flex: 1,
+                                fontFamily: "Roboto",
+                                fontSize: 12,
+                                // marginLeft: 40,
+                                marginTop: 5,
+                                width: 240,
+                                flexWrap: "wrap",
 
-                              fontWeight: "bold",
-                              color: Colors.black,
-                              alignSelf: "flex-start",
-                            }}
-                          >
-                            {item.title}
-                          </Text>
-                          <Text
-                            style={{
-                              fontFamily: "Roboto",
-                              fontSize: 12,
-                              marginLeft: 10,
-                              width: 270,
-                              fontWeight: "bold",
-                              color: Colors.grey,
-                              alignSelf: "flex-start",
-                            }}
-                          >
-                            {item.publishedAt.split("T")[0]}{" "}
-                          </Text>
-                          <Text
-                            style={{
-                              fontFamily: "Roboto",
-                              fontSize: 12,
-                              marginLeft: 10,
-                              width: 270,
-                              fontWeight: "bold",
-                              color: Colors.grey,
-                              alignSelf: "flex-start",
-                            }}
-                          >
-                            {item.author}
-                          </Text>
-                        </View>
-                      </TouchableOpacity>
-                      // </Link>
+                                fontWeight: "bold",
+                                color: Colors.black,
+                                alignSelf: "flex-start",
+                              }}
+                            >
+                              {item.title}
+                            </Text>
+                            <Text
+                              style={{
+                                fontFamily: "Roboto",
+                                fontSize: 12,
+                                // marginLeft: 10,
+                                width: 270,
+                                fontWeight: "bold",
+                                color: Colors.grey,
+                                alignSelf: "flex-start",
+                              }}
+                            >
+                              {item.publishedAt.split("T")[0]}{" "}
+                            </Text>
+                            <Text
+                              style={{
+                                fontFamily: "Roboto",
+                                fontSize: 12,
+                                // marginLeft: 10,
+                                width: 270,
+                                fontWeight: "bold",
+                                color: Colors.grey,
+                                alignSelf: "flex-start",
+                              }}
+                            >
+                              {item.author}
+                            </Text>
+                          </View>
+                        </TouchableOpacity>
+                      </View>
                     );
                   }
                 })}

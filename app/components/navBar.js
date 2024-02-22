@@ -12,7 +12,7 @@ export default function NavBar({ back }) {
         flex: 1,
 
         flexDirection: "row",
-        top: 2,
+        top: 36,
         left: 12,
         zIndex: 20,
       }}

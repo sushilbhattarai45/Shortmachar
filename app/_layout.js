@@ -16,11 +16,12 @@ export default function Index() {
     <View
       style={{
         flex: 1,
-        margin: 30,
+        margin: 0,
       }}
     >
       <ContextProvider>
         <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="index" />
           <Stack.Screen name="screens/homeScreen" options={{}} />
           <Stack.Screen name="screens/newsScreen" options={{}} />
           <Stack.Screen name="screens/myFeedScreen" options={{}} />

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { View, Text, Image } from "react-native";
 import NavBar from "../components/navBar";
@@ -7,15 +7,21 @@ import { useLocalSearchParams } from "expo-router";
 import AppContext from "../components/appContext";
 
 export default function NewsScreen() {
-  const { news, setNews } = useContext(AppContext);
   const params = useLocalSearchParams();
-  const { title, image, author, description, publishedAt, item } = params;
-  console.log(news); // console.log({ title, image, author, description, content, publishedAt });
+
+  const { title, image, author, description, publishedAt, item, key } = params;
+  const [newsData, setNewsData] = useState({});
+  const { news, setNews } = useContext(AppContext);
+  useEffect(() => {
+    console.log("params", news?.articles[key]);
+    setNewsData(news?.articles[key]);
+  }, []);
+
+  // console.log(news); // console.log({ title, image, author, description, content, publishedAt });
   return (
     <View
       style={{
         margin: 0,
-        marginBottom: -30,
         flex: 1,
       }}
     >
@@ -38,7 +44,7 @@ export default function NewsScreen() {
               resizeMode: "contain",
             }}
             source={{
-              uri: image,
+              uri: newsData.urlToImage,
             }}
           />
         </View>
@@ -97,7 +103,7 @@ export default function NewsScreen() {
                 alignSelf: "flex-start",
               }}
             >
-              {title}
+              {newsData.title}
             </Text>
             <Text
               style={{
@@ -110,7 +116,7 @@ export default function NewsScreen() {
                 alignSelf: "flex-start",
               }}
             >
-              {publishedAt?.split("T")[0]}{" "}
+              {newsData?.publishedAt?.split("T")[0]}{" "}
             </Text>
             <Text
               style={{
@@ -123,7 +129,7 @@ export default function NewsScreen() {
                 alignSelf: "flex-start",
               }}
             >
-              {author}
+              {newsData.author}
             </Text>
           </View>
         </View>
@@ -152,7 +158,7 @@ export default function NewsScreen() {
             alignSelf: "flex-start",
           }}
         >
-          {description}
+          {newsData?.description}
         </Text>
       </View>
     </View>
