@@ -14,6 +14,7 @@ export const ContextProvider = ({ children }) => {
       let result = await axios.get(url);
       setNews(result.data);
     };
+
     // 047.05758.01.04
     hitApi();
   }, []);
