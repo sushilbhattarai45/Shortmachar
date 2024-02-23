@@ -63,7 +63,7 @@ export default function NewsScreen() {
       </View>
       <View
         style={{
-          flex: 0.25,
+          flex: 0.21,
           display: "flex",
           alignContent: "center",
           justifyContent: "center",
@@ -155,7 +155,6 @@ export default function NewsScreen() {
       <View
         style={{
           flex: 0.001,
-          height: 1,
           backgroundColor: Colors.primary,
         }}
       ></View>

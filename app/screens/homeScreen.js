@@ -167,7 +167,8 @@ export default function HomeScreen() {
                   key <= 10 &&
                   item.title !== null &&
                   item.title !== "[Removed]" &&
-                  item.urlToImage != null
+                  item.urlToImage != null &&
+                  !item.description.includes(`…`)
                 )
                   return (
                     <TouchableOpacity
@@ -328,6 +329,7 @@ export default function HomeScreen() {
                     item.description != null &&
                     item.urlToImage != null &&
                     item.publishedAt !== null &&
+                    !item.description.includes(`…`) &&
                     item.author != null
                   ) {
                     return (

@@ -15,7 +15,10 @@ export default function MyFeed() {
   }, []);
 
   const renderItem = ({ item, index }) => {
-    if (item.urlToImage != null) {
+    if (item.urlToImage != null && !item.description.includes(`…`)) {
+      if (index == 0) {
+        console.log("item", item.description.includes(`…`));
+      }
       console.log("item", index);
       const marginBottom = index % 2 === 0 ? 20 : -12;
       return (
