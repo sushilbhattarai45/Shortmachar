@@ -25,7 +25,6 @@ export const ContextProvider = ({ children }) => {
     choosingData("trending");
   }, []);
   const choosingData = async (d) => {
-    console.log(d);
     let url =
       "https://newsapi.org/v2/everything?language=en&q=" +
       d +
@@ -34,7 +33,6 @@ export const ContextProvider = ({ children }) => {
       "&to=" +
       today +
       "&sortBy=popularity&apiKey=f30e8c6be91543cb9b6d9473f1d818ff";
-    console.log("url", url);
     let result = await axios.get(url);
     setChooseData(result.data);
   };

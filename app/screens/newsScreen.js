@@ -6,7 +6,8 @@ import { Colors } from "../components/colors";
 import { useLocalSearchParams } from "expo-router";
 import AppContext from "../components/appContext";
 import hitMyApi, { AiSummerise } from "../components/hitApi";
-
+import { Ionicons } from "@expo/vector-icons";
+import { Linking } from "react-native";
 export default function NewsScreen() {
   const params = useLocalSearchParams();
 
@@ -38,7 +39,6 @@ export default function NewsScreen() {
       }}
     >
       <NavBar />
-
       <View
         style={{
           flex: 0.5,
@@ -49,6 +49,21 @@ export default function NewsScreen() {
         }}
       >
         <View style={{}}>
+          <Ionicons
+            onPress={() => {
+              Linking.openURL(newsData.url);
+            }}
+            style={{
+              position: "absolute",
+              top: 36,
+              zIndex: 26,
+              right: 30,
+            }}
+            name="globe-outline"
+            size={24}
+            color="white"
+          />
+
           <Image
             style={{
               width: "100%",
@@ -106,7 +121,7 @@ export default function NewsScreen() {
                 fontFamily: "Roboto",
                 fontSize: 14,
                 marginLeft: 10,
-                width: 300,
+                width: 270,
 
                 marginTop: 5,
                 fontWeight: "bold",
@@ -116,39 +131,31 @@ export default function NewsScreen() {
             >
               {newsData.title}
             </Text>
-            <View
+            <Text
               style={{
-                display: "flex",
-                marginTop: 5,
-                flexDirection: "row",
+                fontFamily: "Roboto",
+                fontSize: 12,
+                marginTop: 4,
+                marginLeft: 10,
+                fontWeight: "bold",
+                color: Colors.grey,
+                alignSelf: "flex-start",
               }}
             >
-              <Text
-                style={{
-                  fontFamily: "Roboto",
-                  fontSize: 14,
-                  marginLeft: 10,
-                  fontWeight: "bold",
-                  color: Colors.grey,
-                  alignSelf: "flex-start",
-                }}
-              >
-                {newsData?.publishedAt?.split("T")[0]}{" "}
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "Roboto",
-                  fontSize: 14,
-                  marginLeft: 10,
-                  fontWeight: "bold",
-                  width: 200,
-                  color: Colors.grey,
-                  alignSelf: "flex-start",
-                }}
-              >
-                {newsData.author}
-              </Text>
-            </View>
+              {newsData?.publishedAt?.split("T")[0]}{" "}
+            </Text>
+            <Text
+              style={{
+                fontFamily: "Roboto",
+                fontSize: 12,
+                marginLeft: 10,
+                fontWeight: "bold",
+                color: Colors.grey,
+                alignSelf: "flex-start",
+              }}
+            >
+              {newsData.author?.split(" ")[0]}
+            </Text>
           </View>
         </View>
       </View>

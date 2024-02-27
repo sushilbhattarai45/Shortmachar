@@ -4,6 +4,10 @@ import NavBar from "../components/navBar";
 import { Colors } from "../components/colors";
 import { useRouter } from "expo-router";
 import AppContext from "../components/appContext";
+
+import { Ionicons } from "@expo/vector-icons";
+import { Linking } from "react-native";
+
 export default function MyFeed() {
   const { news, setNews } = React.useContext(AppContext);
   const [data, setData] = useState({}); //[news?.articles[key]
@@ -29,6 +33,20 @@ export default function MyFeed() {
             height: windowHeight + 30,
           }}
         >
+          <Ionicons
+            onPress={() => {
+              Linking.openURL(item.url);
+            }}
+            style={{
+              position: "absolute",
+              top: 36,
+              zIndex: 26,
+              right: 30,
+            }}
+            name="globe-outline"
+            size={24}
+            color="white"
+          />
           <Image
             style={{
               width: "100%",

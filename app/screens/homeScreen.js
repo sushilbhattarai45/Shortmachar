@@ -38,7 +38,6 @@ export default function HomeScreen() {
   };
   const getFeaturedPosts = async (label) => {
     const labelData = await hitMyApi(label);
-    console.log("labelData", labelData);
     setChooseData(labelData);
   };
 
