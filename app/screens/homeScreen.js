@@ -7,6 +7,7 @@ import {
   Image,
   ScrollView,
   Dimensions,
+  StatusBar,
   TouchableOpacity,
   KeyboardAvoidingView,
 } from "react-native";
@@ -50,9 +51,18 @@ export default function HomeScreen() {
         flex: 1,
       }}
     >
+      <StatusBar
+        barStyle={"dark-content"}
+        animated={true}
+        backgroundColor={Colors?.primary}
+        style={{
+          zIndex: 20,
+        }}
+      />
       <View
         style={{
           margin: 16,
+          marginTop: 0,
           flex: 1,
         }}
       >

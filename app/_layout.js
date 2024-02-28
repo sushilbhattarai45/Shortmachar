@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StatusBar } from "react-native";
 import { Link } from "expo-router";
 import { useLocalSearchParams } from "expo-router";
 import HomeScreen from "./screens/homeScreen";
@@ -17,12 +17,23 @@ export default function Index() {
       style={{
         flex: 1,
         backgroundColor: Colors.white,
-        margin: 0,
+        marginTop: StatusBar.currentHeight,
       }}
     >
+      <StatusBar
+        animated={true}
+        backgroundColor={"black"}
+        style={{
+          zIndex: 20,
+        }}
+      />
       <ContextProvider>
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="index" />
+        <Stack
+          screenOptions={{ headerShown: false }}
+          style={{
+            marginTop: StatusBar.currentHeight,
+          }}
+        >
           <Stack.Screen name="screens/homeScreen" options={{}} />
           <Stack.Screen name="screens/newsScreen" options={{}} />
           <Stack.Screen name="screens/myFeedScreen" options={{}} />

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StatusBar } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { Link, router } from "expo-router";
 import { Colors } from "./colors";
@@ -13,19 +13,23 @@ export default function NavBar({ back, title, color }) {
   return (
     <View
       style={{
+        width: "100%",
         position: "absolute",
         display: "flex",
-        flex: 1,
+        backgroundColor: Colors.black,
+        padding: 16,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
 
+        flex: 1,
         flexDirection: "row",
-        top: 36,
-        left: 12,
         zIndex: 20,
       }}
     >
       <View
         style={{
           display: "flex",
+
           flexDirection: "row",
         }}
       >

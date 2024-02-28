@@ -1,56 +1,44 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, Image, Dimensions, FlatList } from "react-native";
+import React, { useEffect, useState, useRef } from "react";
+import {
+  View,
+  Text,
+  Image,
+  Dimensions,
+  FlatList,
+  StatusBar,
+} from "react-native";
 import NavBar from "../components/navBar";
 import { Colors } from "../components/colors";
 import { useRouter } from "expo-router";
 import AppContext from "../components/appContext";
-
 import { Ionicons } from "@expo/vector-icons";
 import { Linking } from "react-native";
 
 export default function MyFeed() {
   const { news, setNews } = React.useContext(AppContext);
-  const [data, setData] = useState({}); //[news?.articles[key]
-  const windowHeight = Dimensions.get("window").height;
+  const [data, setData] = useState([]); // changed from {} to []
   const windowWidth = Dimensions.get("window").width;
-  const router = useRouter();
+  const windowHeight = Dimensions.get("window").height;
+  const flatListRef = useRef(); // new useRef
+  const router = useRouter(); // added router
+
   useEffect(() => {
     setData(news?.articles);
   }, []);
 
   const renderItem = ({ item, index }) => {
-    if (item.urlToImage != null && !item.description.includes(`…`)) {
-      if (index == 0) {
-        console.log("item", item.description.includes(`…`));
-      }
-      console.log("item", index);
-      const marginBottom = index % 2 === 0 ? 20 : -12;
+    if (item.urlToImage != null && !item.description.includes("…")) {
       return (
         <View
           style={{
-            marginBottom: marginBottom,
             width: windowWidth,
-            height: windowHeight + 30,
+            height: windowHeight, // changed from windowHeight
+            alignItems: "center", // to center the content
           }}
         >
-          <Ionicons
-            onPress={() => {
-              Linking.openURL(item.url);
-            }}
-            style={{
-              position: "absolute",
-              top: 36,
-              zIndex: 26,
-              right: 30,
-            }}
-            name="globe-outline"
-            size={24}
-            color="white"
-          />
           <Image
             style={{
               width: "100%",
-
               aspectRatio: 16 / 9,
             }}
             source={{
@@ -103,7 +91,6 @@ export default function MyFeed() {
                     fontSize: 12,
                     marginLeft: 10,
                     width: 270,
-
                     marginTop: 5,
                     fontWeight: "bold",
                     color: Colors.primary,
@@ -112,6 +99,20 @@ export default function MyFeed() {
                 >
                   {item.title}
                 </Text>
+                <Ionicons
+                  onPress={() => {
+                    Linking.openURL(item.url);
+                  }}
+                  style={{
+                    position: "absolute",
+                    top: 36,
+                    zIndex: 26,
+                    right: 30,
+                  }}
+                  name="globe-outline"
+                  size={24}
+                  color={Colors.primary}
+                />
                 <Text
                   style={{
                     fontFamily: "Roboto",
@@ -141,7 +142,6 @@ export default function MyFeed() {
               </View>
             </View>
           </View>
-
           <View
             style={{
               flex: 0.8,
@@ -176,28 +176,15 @@ export default function MyFeed() {
   };
 
   return (
-    <View
-      style={{
-        flex: 1,
-      }}
-    >
+    <View style={{ flex: 1 }}>
       <NavBar back={router.back} />
+
       <FlatList
         data={data}
         renderItem={renderItem}
-        keyExtractor={(item, index) => {
-          return index.toString();
-          // return (
-          //   <View
-          //     style={{
-          //       marginTop: 10,
-          //     }}
-          //   >
-          //     <Text>Hello</Text>
-          //   </View>
-          // );
-        }}
-        pagingEnabled
+        keyExtractor={(item, index) => index.toString()}
+        ref={flatListRef} // set the ref here
+        pagingEnabled // enable paging for full height rendering
       />
     </View>
   );

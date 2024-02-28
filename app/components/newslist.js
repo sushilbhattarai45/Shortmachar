@@ -3,7 +3,6 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Colors } from "./colors";
 import { router } from "expo-router";
 export default function NewsList({ item, index }) {
-  console.log("item", index);
   return (
     <TouchableOpacity
       onPress={() => {
@@ -11,11 +10,6 @@ export default function NewsList({ item, index }) {
           pathname: "screens/newsScreen",
           params: {
             key: index,
-            // title: item.title,
-            // image: item?.urlToImage,
-            // author: item?.author,
-            // description: item?.description,
-            // publishedAt: item?.publishedAt,
           },
         });
       }}

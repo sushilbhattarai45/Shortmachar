@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, StatusBar } from "react-native";
 import NavBar from "../components/navBar";
 import { Colors } from "../components/colors";
 import { useLocalSearchParams } from "expo-router";
@@ -51,11 +51,11 @@ export default function NewsScreen() {
         <View style={{}}>
           <Ionicons
             onPress={() => {
-              Linking.openURL(newsData.url);
+              Linking.openURL(newsData?.url);
             }}
             style={{
               position: "absolute",
-              top: 36,
+              top: StatusBar.currentHeight - 20,
               zIndex: 26,
               right: 30,
             }}
@@ -154,7 +154,7 @@ export default function NewsScreen() {
                 alignSelf: "flex-start",
               }}
             >
-              {newsData.author?.split(" ")[0]}
+              {newsData?.author?.split(" ")[0]}
             </Text>
           </View>
         </View>
