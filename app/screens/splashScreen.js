@@ -3,11 +3,12 @@ import { View, Text, StatusBar, Image, ActivityIndicator } from "react-native";
 import AppContext from "../components/appContext";
 import { router } from "expo-router";
 import { Colors } from "../components/colors";
+import { useEffect } from "react";
 export default function SplashScreen() {
-  const { news, setNews, chooseData } = useContext(AppContext);
-  if (news?.articles && chooseData?.articles) {
+  setTimeout(() => {
     router.push("screens/homeScreen", { slug: "home" });
-  }
+  }, 5000);
+
   return (
     <View
       style={{

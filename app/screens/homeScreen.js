@@ -46,7 +46,7 @@ export default function HomeScreen() {
 
   return (
     <ScrollView
-      contentContainerStyle={{ flexGrow: 1 }}
+      contentContainerStyle={{ flexGrow: 1, backgroundColor: Colors.white }}
       style={{
         flex: 1,
       }}

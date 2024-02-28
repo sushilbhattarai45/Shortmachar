@@ -27,17 +27,23 @@ export default function MyFeed() {
   }, []);
 
   const renderItem = ({ item, index }) => {
-    if (item.urlToImage != null && !item.description.includes("…")) {
+    if (
+      item.urlToImage != null &&
+      !item.description.includes("…") &&
+      !item.description.includes("...")
+    ) {
       return (
         <View
           style={{
             width: windowWidth,
+
             height: windowHeight, // changed from windowHeight
             alignItems: "center", // to center the content
           }}
         >
           <Image
             style={{
+              marginTop: 50,
               width: "100%",
               aspectRatio: 16 / 9,
             }}

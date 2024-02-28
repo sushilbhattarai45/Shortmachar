@@ -26,7 +26,6 @@ export default function SearchScreen() {
   return (
     <View
       style={{
-        margin: 10,
         backgroundColor: Colors.white,
         flex: 1,
       }}
@@ -35,7 +34,7 @@ export default function SearchScreen() {
       <View
         style={{
           backgroundColor: Colors.white,
-          marginTop: 70,
+          marginTop: 60,
           margin: 10,
           flex: 1,
           flexDirection: "column",

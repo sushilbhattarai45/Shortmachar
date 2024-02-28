@@ -24,6 +24,8 @@ export default function Index() {
           zIndex: 20,
         }}
       />
+
+      {/* <HomeScreen /> */}
       <SplashScreen />
     </View>
   );

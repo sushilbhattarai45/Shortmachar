@@ -53,6 +53,8 @@ export default function NewsScreen() {
 
           <Image
             style={{
+              marginTop: 50,
+
               width: "100%",
               aspectRatio: 16 / 9,
               resizeMode: "contain",
@@ -65,7 +67,8 @@ export default function NewsScreen() {
       </View>
       <View
         style={{
-          flex: 0.21,
+          marginTop: 50,
+          flex: 0.26,
           display: "flex",
           alignContent: "center",
           justifyContent: "center",

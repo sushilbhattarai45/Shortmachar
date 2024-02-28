@@ -10,7 +10,7 @@ export default function NavBar({ title, color }) {
         width: "100%",
         position: "absolute",
         display: "flex",
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         padding: 16,
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,
@@ -31,7 +31,7 @@ export default function NavBar({ title, color }) {
           onPress={() => router.back()}
           name="arrow-left"
           size={24}
-          color={Colors.white}
+          color={Colors.primary}
         />
       </View>
       <View>
@@ -41,7 +41,7 @@ export default function NavBar({ title, color }) {
             fontSize: 16,
             marginLeft: 24,
             fontWeight: "bold",
-            color: Colors.white,
+            color: Colors.primary,
             alignSelf: "flex-start",
           }}
         >
