@@ -9,6 +9,7 @@ export default function NewsList({ item, index }) {
         router.push({
           pathname: "screens/newsScreen",
           params: {
+            featured: false,
             key: index,
           },
         });

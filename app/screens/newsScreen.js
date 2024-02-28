@@ -3,9 +3,8 @@ import { useContext, useEffect, useState } from "react";
 import { View, Text, Image, StatusBar } from "react-native";
 import NavBar from "../components/navBar";
 import { Colors } from "../components/colors";
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import AppContext from "../components/appContext";
-import hitMyApi, { AiSummerise } from "../components/hitApi";
 import { Ionicons } from "@expo/vector-icons";
 import { Linking } from "react-native";
 export default function NewsScreen() {
@@ -13,24 +12,12 @@ export default function NewsScreen() {
 
   const { key, featured } = params;
   const [newsData, setNewsData] = useState({});
-  const [summerisedData, setSummerisedData] = useState({});
   const { news, setNews, chooseData } = useContext(AppContext);
   useEffect(() => {
-    console.clear();
-    if (featured) {
-      setNewsData(news?.articles[key]);
-      // AiSummerise(news?.articles[key].description).then((data) => {
-      //   setSummerisedData(data);
-      // });
-    } else {
-      setNewsData(chooseData?.articles[key]);
-      // AiSummerise(chooseData?.articles[key].description).then((data) => {
-      //   setSummerisedData(data);
-      // });
-    }
+    featured
+      ? setNewsData(news?.articles[key])
+      : setNewsData(chooseData?.articles[key]);
   }, []);
-
-  // console.log(news); // console.log({ title, image, author, description, content, publishedAt });
   return (
     <View
       style={{
@@ -38,7 +25,7 @@ export default function NewsScreen() {
         flex: 1,
       }}
     >
-      <NavBar />
+      <NavBar title="Read News" />
       <View
         style={{
           flex: 0.5,

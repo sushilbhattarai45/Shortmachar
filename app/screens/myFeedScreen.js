@@ -177,7 +177,7 @@ export default function MyFeed() {
 
   return (
     <View style={{ flex: 1 }}>
-      <NavBar back={router.back} />
+      <NavBar title="My Feed" />
 
       <FlatList
         data={data}
