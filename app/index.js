@@ -4,7 +4,7 @@ import { Link } from "expo-router";
 import { useLocalSearchParams } from "expo-router";
 import HomeScreen from "./screens/homeScreen";
 import { Colors } from "./components/colors";
-
+import SplashScreen from "./screens/splashScreen";
 export default function Index() {
   //   useEffect(() => {
   //     router.push("screens/homeScreen", { slug: "home" });
@@ -19,13 +19,12 @@ export default function Index() {
     >
       <StatusBar
         animated={true}
-        backgroundColor={Colors?.primary}
+        backgroundColor="black"
         style={{
           zIndex: 20,
         }}
       />
-      {/* <SearchScreen /> */}
-      <HomeScreen />
+      <SplashScreen />
     </View>
   );
 }

@@ -20,13 +20,6 @@ export default function Index() {
         marginTop: StatusBar.currentHeight,
       }}
     >
-      <StatusBar
-        animated={true}
-        backgroundColor={"black"}
-        style={{
-          zIndex: 20,
-        }}
-      />
       <ContextProvider>
         <Stack
           screenOptions={{ headerShown: false }}
@@ -37,6 +30,8 @@ export default function Index() {
           <Stack.Screen name="screens/homeScreen" options={{}} />
           <Stack.Screen name="screens/newsScreen" options={{}} />
           <Stack.Screen name="screens/myFeedScreen" options={{}} />
+          <Stack.Screen name="screens/splashScreen" options={{}} />
+
           <Stack.Screen name="screens/searchScreen" options={{}} />
         </Stack>
       </ContextProvider>

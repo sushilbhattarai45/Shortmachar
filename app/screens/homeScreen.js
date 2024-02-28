@@ -54,7 +54,7 @@ export default function HomeScreen() {
       <StatusBar
         barStyle={"dark-content"}
         animated={true}
-        backgroundColor={Colors?.primary}
+        backgroundColor={Colors?.black}
         style={{
           zIndex: 20,
         }}
